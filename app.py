@@ -1,6 +1,12 @@
 import anthropic
+from dotenv import load_dotenv
+import os
 
-client = anthropic.Anthropic()
+
+load_dotenv()
+key = os.getenv("cluade_api_key")
+
+client = anthropic.Anthropic(api_key=key)
 
 message = client.messages.create(
     model="claude-opus-4-6",
@@ -13,3 +19,5 @@ message = client.messages.create(
     ],
 )
 print(message.content)
+
+
